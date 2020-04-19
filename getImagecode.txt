@@ -1,0 +1,8 @@
+// 打开QQ空间某个相册，点击图片出现一张一张查看图片的界面后，打开调试窗口执行下面的代码，获取所有的图片地址
+// 循环次数改成图片的个数
+// 获取到全部的图片地址后，复制到iamgeList.js文件中，执行index.js文件就可以将图片都下载到images文件夹
+// webpToJpg.js文件可以将iamges中的webp文件转化为jpg
+let imageUrl = [];
+let getImageUrl = function(){$("js-btn-nextPhoto").dispatchEvent(new Event('click'));return new Promise((resolve,reject)=>{setTimeout(()=>{imageUrl.push($("js-img-disp").currentSrc); resolve()},2000);})};
+let endExec = async function() {for (let i = 0; i < 2901; i++){await getImageUrl()}}
+endExec().then(res => {console.log(imageUrl)}).catch(err => {console.log(err)})
